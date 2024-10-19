@@ -1,15 +1,15 @@
 import {
   IconBrandBlogger,
-  IconCategory,
+  // IconCategory,
   IconLayoutDashboard,
-  IconMilk,
+  // IconMilk,
   IconUsers,
-  IconTicket,
-  IconMenuOrder,
+  // IconTicket,
+  // IconMenuOrder,
   IconReport,
   IconHome
 } from "@tabler/icons-react";
-import { Milk, StoreIcon } from "lucide-react";
+// import { Milk, StoreIcon } from "lucide-react";
 
 export interface NavLink {
   title: string;
