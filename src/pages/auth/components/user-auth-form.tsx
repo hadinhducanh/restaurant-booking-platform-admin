@@ -56,26 +56,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       // Check user role after successful login
       const userInfo = await getUserInfo();
       if (userInfo) {
-        if (
-          (userInfo.roleName === "ROLE_STAFF" ||
-          userInfo.roleName === "ROLE_ADMIN") && !userInfo.firstLogin
-        ) {
-          // User has permission, navigate to admin page
+        if (userInfo.roleName === "SYSTEM_ADMIN") {
           navigate("/admin");
-
-        }
-        if( (userInfo.roleName === "ROLE_STAFF" ||
-          userInfo.roleName === "ROLE_ADMIN") && userInfo.firstLogin)
-          {
-            navigate("/change-password");
-            localStorage.removeItem('isLoggedIn');
-        
-          }
-         else {
+        } else {
           // User does not have permission
           setError("You don't have permission.");
         }
-       
       } else {
         setError("Failed to retrieve user information.");
       }
@@ -96,12 +82,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               name="userNameOrEmailOrPhone"
               render={({ field }) => (
                 <FormItem className="space-y-1">
-                  <FormLabel>Username, Email, or Phone</FormLabel>
+                  <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="Enter your username, email, or phone number"
-                      {...field}
-                    />
+                    <Input placeholder="Enter your username" {...field} />
                   </FormControl>
                   <FormMessage>
                     {form.formState.errors.userNameOrEmailOrPhone?.message}

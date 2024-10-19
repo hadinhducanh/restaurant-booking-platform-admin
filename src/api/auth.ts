@@ -37,7 +37,7 @@ export const refreshTokenIfNeeded = async (): Promise<boolean> => {
 
 export const login = async (username: string, password: string): Promise<boolean> => {
     try {
-        const response = await axios.post(`${BASE_URL}auth/user/login`, {
+        const response = await axios.post(`${BASE_URL}auth/login`, {
             userNameOrEmailOrPhone: username,
             password: password
         });
@@ -57,7 +57,7 @@ export const getUserInfo = async (): Promise<User | null> => {
         if (!accessToken || isAccessTokenExpired(accessToken)) {
             throw new Error('Access token is missing or expired');
         }
-        const response = await axios.get(`${BASE_URL}auth/user/info`, {
+        const response = await axios.get(`${BASE_URL}auth/info`, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
             }
