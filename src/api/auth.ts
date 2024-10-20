@@ -2,7 +2,6 @@ import { User } from '@/models/User';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
-// const BASE_URL = "https://motherlove-api.onrender.com/api/v1/";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
