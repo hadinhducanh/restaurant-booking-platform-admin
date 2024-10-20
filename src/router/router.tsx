@@ -21,6 +21,7 @@ import { BrandForm } from "@/pages/brand/brand-detail/add-brand-form";
 import Reports from "@/pages/reports/Reports";
 import { StocksTransaction } from "@/pages/stock-transaction/StockTransaction";
 import { StockForm } from "@/pages/stock-transaction/stock-detail/add-stock-form";
+import { Location } from "@/pages/location/Location";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "/admin/location",
+        element: <Location />,
       },
       {
         path: "/admin/milk",

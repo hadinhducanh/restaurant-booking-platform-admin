@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 
 const sleep = (ms = 500) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// const BASE_URL =  "http://localhost:8080/api/v1/";
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 axios.defaults.baseURL = BASE_URL;
@@ -73,8 +72,28 @@ const requests = {
   delete: (url: string) => axiosInstance.delete(url).then(responseBody),
 };
 
-const createListEndpoint = (endpoint: string, defaultSortBy: string, defaultSortDir: string = "asc") => {
-  return (pageNo: number, pageSize: number) => requests.get(`${endpoint}?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${defaultSortBy}&sortDir=${defaultSortDir}`);
+const createListEndpoint = (
+  endpoint: string, 
+  defaultSortBy: string, 
+  defaultSortDir: string = "asc", 
+  extraParams?: (params: Record<string, any>) => string
+) => {
+  return (pageNo: number, pageSize: number, searchNearBy?: boolean) => {
+    let query = `?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${defaultSortBy}&sortDir=${defaultSortDir}`;
+    
+    if (extraParams) {
+      query += extraParams({ searchNearBy });
+    }
+
+    return requests.get(`${endpoint}${query}`);
+  };
+};
+
+const Location = {
+  list: createListEndpoint("locations/search", "id", "asc", () => "&searchNearBy=false"),
+  update: (location: any) => requests.put("locations", location),
+  add: (location: any) => requests.post("locations", location),
+  delete: (locationId: number) => requests.delete(`location/${locationId}`),
 };
 
 
@@ -177,7 +196,8 @@ const agent = {
   Users,
   Reports,
   StockTransaction,
-  Supplier
+  Supplier,
+  Location
 };
 
 export default agent;
