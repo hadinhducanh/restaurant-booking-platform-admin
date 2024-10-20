@@ -184,6 +184,11 @@ const StockTransaction = {
 const Supplier = {
   list: createListEndpoint("suppliers", "supplierId"),
 }
+const LocationPaymentHistories = {
+  list: (locationId: number, pageNo: number, pageSize: number, sortBy: string = "id", sortDir: string = "asc") => {
+    return requests.get(`payment-histories/locations/${locationId}?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDir=${sortDir}`);
+  },
+}
 
 const agent = {
   Products,
@@ -197,7 +202,8 @@ const agent = {
   Reports,
   StockTransaction,
   Supplier,
-  Location
+  Location,
+  LocationPaymentHistories,
 };
 
 export default agent;

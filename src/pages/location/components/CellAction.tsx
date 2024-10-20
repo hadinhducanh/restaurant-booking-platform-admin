@@ -53,6 +53,10 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     navigate("/admin/newlocation", { state: data });
   };
 
+  const handleViewPaymentHistoriesClick = () => {
+    navigate(`/admin/location-payment-histories/${data.id}`);
+  };
+
   return (
     <>
       <AlertModal
@@ -76,6 +80,13 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             >
               <Icons.copy className="mr-2 h-4 w-4" />
               Copy Location ID
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={handleViewPaymentHistoriesClick}
+              className="text-orange-500"
+            >
+              <Icons.delete className="mr-2 h-4 w-4" />
+              View Payment Histories
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DialogTrigger asChild onClick={handleEditClick}>
