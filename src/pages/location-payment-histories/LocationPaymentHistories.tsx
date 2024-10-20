@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { LoaderCircle, Plus } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DataTable } from "@/components/DataTable/data-table";
 import agent from "@/api/agent";
 import { LocationPaymentHistoriesObj } from "@/models/LocationPaymentHistories";
@@ -12,10 +12,11 @@ import { DataTablePagination } from "@/components/DataTable/data-table-paginatio
 import { columns } from "./components/columns";
 
 export const LocationPaymentHistories = () => {
+  const { locationId } = useParams<{ locationId: string }>();
   const [data, setData] = useState<LocationPaymentHistoriesObj[]>([]);
   const [pageNo, setPageNo] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  const [sortBy] = useState("locationPaymentHistoryId");
+  const [sortBy] = useState("id");
   const [sortDir] = useState<"asc" | "desc">("asc");
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +25,7 @@ export const LocationPaymentHistories = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await agent.LocationPaymentHistories.list(pageNo, pageSize);
+        const result = await agent.LocationPaymentHistories.list(Number(locationId), pageNo, pageSize, sortBy, sortDir);
         setData(result.content); // Assuming the data is in the `data` field of the response
         setTotalPages(result.totalPages);
       } catch (error) {

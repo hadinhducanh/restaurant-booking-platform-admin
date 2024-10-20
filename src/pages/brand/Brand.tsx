@@ -25,7 +25,7 @@ export const Brand = () => {
     const getData = async () => {
       try {
         const result = await agent.Brand.list(pageNo, pageSize);
-        setData(result.content); // Assuming the data is in the `data` field of the response
+        setData(result.content);
         setTotalPages(result.totalPages);
       } catch (error) {
         // console.error("Error fetching data:", error);
