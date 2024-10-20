@@ -165,6 +165,9 @@ const StockTransaction = {
 const Supplier = {
   list: createListEndpoint("suppliers", "supplierId"),
 }
+const LocationPaymentHistories = {
+  list: createListEndpoint("payment-histories", "id"),
+}
 
 const agent = {
   Products,
@@ -177,7 +180,8 @@ const agent = {
   Users,
   Reports,
   StockTransaction,
-  Supplier
+  Supplier,
+  LocationPaymentHistories,
 };
 
 export default agent;

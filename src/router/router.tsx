@@ -21,6 +21,7 @@ import { BrandForm } from "@/pages/brand/brand-detail/add-brand-form";
 import Reports from "@/pages/reports/Reports";
 import { StocksTransaction } from "@/pages/stock-transaction/StockTransaction";
 import { StockForm } from "@/pages/stock-transaction/stock-detail/add-stock-form";
+import { LocationPaymentHistories } from "@/pages/location-payment-histories/LocationPaymentHistories";
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/stocks",
         element: <StocksTransaction />,
+      },
+      {
+        path: "/admin/location-payment-histories",
+        element: <LocationPaymentHistories />,
       },
     ],
   },
