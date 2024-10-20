@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { LoaderCircle, Plus } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { DataTable } from "@/components/DataTable/data-table";
 import agent from "@/api/agent";
 import { LocationPaymentHistoriesObj } from "@/models/LocationPaymentHistories";
@@ -20,7 +19,7 @@ export const LocationPaymentHistories = () => {
   const [sortDir] = useState<"asc" | "desc">("asc");
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
