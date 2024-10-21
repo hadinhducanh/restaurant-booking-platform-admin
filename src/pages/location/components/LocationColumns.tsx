@@ -37,7 +37,7 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Location ID
+          Id
           <Icons.sort className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -63,27 +63,27 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
     header: "Phone",
     cell: ({ row }) => <span>{row.original.phone}</span>,
   },
-  {
-    accessorKey: "onSuggest",
-    header: "On Suggest",
-    cell: ({ row }) => (
-      <span>{row.original.onSuggest === 1 ? "true" : "false"}</span>
-    ),
-  },
-  {
-    accessorKey: "onSale",
-    header: "On Sale",
-    cell: ({ row }) => (
-      <span>{row.original.onSale === 1 ? "true" : "false"}</span>
-    ),
-  },
-  {
-    accessorKey: "onBanner",
-    header: "On Banner",
-    cell: ({ row }) => (
-      <span>{row.original.onBanner === 1 ? "true" : "false"}</span>
-    ),
-  },
+  // {
+  //   accessorKey: "onSuggest",
+  //   header: "On Suggest",
+  //   cell: ({ row }) => (
+  //     <span>{row.original.onSuggest === 1 ? "true" : "false"}</span>
+  //   ),
+  // },
+  // {
+  //   accessorKey: "onSale",
+  //   header: "On Sale",
+  //   cell: ({ row }) => (
+  //     <span>{row.original.onSale === 1 ? "true" : "false"}</span>
+  //   ),
+  // },
+  // {
+  //   accessorKey: "onBanner",
+  //   header: "On Banner",
+  //   cell: ({ row }) => (
+  //     <span>{row.original.onBanner === 1 ? "true" : "false"}</span>
+  //   ),
+  // },
   {
     accessorKey: "view",
     header: "Views",
@@ -113,11 +113,6 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
         </span>
       );
     },
-  },
-  {
-    accessorKey: "tagName",
-    header: "Tags",
-    cell: ({ row }) => <span>{row.original.tagName.join(", ")}</span>,
   },
   {
     id: "actions",

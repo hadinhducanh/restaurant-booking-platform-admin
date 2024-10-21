@@ -94,6 +94,7 @@ const Location = {
   update: (location: any) => requests.put("locations", location),
   add: (location: any) => requests.post("locations", location),
   delete: (locationId: number) => requests.delete(`location/${locationId}`),
+  getById: (locationId: number) => requests.get(`locations/${locationId}`),
 };
 
 

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { MoreHorizontal } from "lucide-react";
 
@@ -14,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Icons } from "@/components/ui/icons";
 import { useNavigate } from "react-router-dom";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import agent from "@/api/agent";
 import { useToast } from "@/components/ui/use-toast";
 import { AlertModal } from "@/components/modal/alert-modal";
@@ -49,8 +47,8 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     }
   };
 
-  const handleEditClick = () => {
-    navigate("/admin/newlocation", { state: data });
+  const handleViewDetailsClick = () => {
+    navigate(`/admin/location/${data.id}`);
   };
 
   const handleViewPaymentHistoriesClick = () => {
@@ -75,26 +73,15 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(data.id.toString())}
-            >
-              <Icons.copy className="mr-2 h-4 w-4" />
-              Copy Location ID
+            <DropdownMenuItem onClick={handleViewDetailsClick}>
+              <Icons.info className="mr-2 h-4 w-4" />
+              View Details
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={handleViewPaymentHistoriesClick}
-              className="text-orange-500"
-            >
-              <Icons.delete className="mr-2 h-4 w-4" />
+            <DropdownMenuItem onClick={handleViewPaymentHistoriesClick}>
+              <Icons.speedNext className="mr-2 h-4 w-4" />
               View Payment Histories
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DialogTrigger asChild onClick={handleEditClick}>
-              <DropdownMenuItem>
-                <Icons.edit className="mr-2 h-4 w-4" />
-                Edit
-              </DropdownMenuItem>
-            </DialogTrigger>
             <DropdownMenuItem
               onClick={() => setOpen(true)}
               className="text-red-600"

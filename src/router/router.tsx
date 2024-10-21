@@ -23,6 +23,7 @@ import { StocksTransaction } from "@/pages/stock-transaction/StockTransaction";
 import { StockForm } from "@/pages/stock-transaction/stock-detail/add-stock-form";
 import { Location } from "@/pages/location/Location";
 import { LocationPaymentHistories } from "@/pages/location-payment-histories/LocationPaymentHistories";
+import LocationDetail from "@/pages/location/location-detail/LocationDetail";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/location",
         element: <Location />,
+      },
+      {
+        path: "/admin/location/:locationId",
+        element: <LocationDetail />,
       },
       {
         path: "/admin/milk",
