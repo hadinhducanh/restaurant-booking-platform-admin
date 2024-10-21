@@ -44,7 +44,7 @@ export const Location = () => {
 
   return (
     <>
-     <div className="flex items-center justify-between pt-4">
+     <div className="flex items-center justify-between">
         <Heading
           title={`Location (${Object.keys(data).length})`}
           description="Manage locations in system"

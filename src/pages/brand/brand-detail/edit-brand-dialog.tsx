@@ -126,7 +126,7 @@ export default function EditBrandDialog({ brand }: EditProps) {
                   <FormLabel>Image</FormLabel>
                   <FormControl>
                     <ImageUpload
-                      value={{ ...field.value } ? [field.value] : []} // Convert to array for ImageUpload component
+                      value={field.value ? [field.value] : []} // Convert to array for ImageUpload component
                       onChange={(url) => handleImageUpload(url)}
                       onRemove={(url) => handleImageRemove(url)}
                     />
