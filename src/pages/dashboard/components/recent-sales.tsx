@@ -1,67 +1,77 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import agent from "@/api/agent";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { RecentPaymentResponse } from "@/models/LocationPaymentHistories";
+import { PriceFormatter } from "@/utils/PriceFormatter";
+import { useEffect, useState } from "react";
 
 export function RecentSales() {
+  const [data, setData] = useState<RecentPaymentResponse[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await agent.AdminDashboard.getRecentPaymentHistories(
+          "PAID",
+          5
+        );
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError("Failed to load recent sales data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []); // Corrected dependency array placement
+
+  const getInitials = (fullName: string) => {
+    const names = fullName.split(" ");
+    const initials = names.map((name) => name.charAt(0).toUpperCase()).join("");
+    return initials;
+  };
+
+  const defaultAvatars = [
+    "/avatars/01.png",
+    "/avatars/02.png",
+    "/avatars/03.png",
+    "/avatars/04.png",
+    "/avatars/05.png",
+  ];
+
+  if (loading) {
+    return <div>Loading recent sales...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500">{error}</div>;
+  }
+
+  if (data.length === 0) {
+    return <div>No recent sales data available.</div>;
+  }
+
   return (
-    <div className='space-y-8'>
-      <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/01.png' alt='Avatar' />
-          <AvatarFallback>OM</AvatarFallback>
-        </Avatar>
-        <div className='ml-4 space-y-1'>
-          <p className='text-sm font-medium leading-none'>Olivia Martin</p>
-          <p className='text-sm text-muted-foreground'>
-            olivia.martin@email.com
-          </p>
+    <div className="space-y-8">
+      {data.map((item, index) => (
+        <div key={index} className="flex items-center">
+          <Avatar className="h-9 w-9">
+            {defaultAvatars[index] ? (
+              <AvatarImage src={defaultAvatars[index]} alt={`${item.userFullName} Avatar`} />
+            ) : null}
+            <AvatarFallback>{getInitials(item.userFullName)}</AvatarFallback>
+          </Avatar>
+
+          <div className="ml-4 space-y-1">
+            <p className="text-sm font-medium leading-none">{item.userFullName}</p>
+            <p className="text-sm text-muted-foreground">{item.userEmail}</p>
+          </div>
+
+          <div className="ml-auto font-medium">{PriceFormatter.formatPrice(item.paymentPrice)} vnđ</div>
         </div>
-        <div className='ml-auto font-medium'>+$1,999.00</div>
-      </div>
-      <div className='flex items-center'>
-        <Avatar className='flex h-9 w-9 items-center justify-center space-y-0 border'>
-          <AvatarImage src='/avatars/02.png' alt='Avatar' />
-          <AvatarFallback>JL</AvatarFallback>
-        </Avatar>
-        <div className='ml-4 space-y-1'>
-          <p className='text-sm font-medium leading-none'>Jackson Lee</p>
-          <p className='text-sm text-muted-foreground'>jackson.lee@email.com</p>
-        </div>
-        <div className='ml-auto font-medium'>+$39.00</div>
-      </div>
-      <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/03.png' alt='Avatar' />
-          <AvatarFallback>IN</AvatarFallback>
-        </Avatar>
-        <div className='ml-4 space-y-1'>
-          <p className='text-sm font-medium leading-none'>Isabella Nguyen</p>
-          <p className='text-sm text-muted-foreground'>
-            isabella.nguyen@email.com
-          </p>
-        </div>
-        <div className='ml-auto font-medium'>+$299.00</div>
-      </div>
-      <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/04.png' alt='Avatar' />
-          <AvatarFallback>WK</AvatarFallback>
-        </Avatar>
-        <div className='ml-4 space-y-1'>
-          <p className='text-sm font-medium leading-none'>William Kim</p>
-          <p className='text-sm text-muted-foreground'>will@email.com</p>
-        </div>
-        <div className='ml-auto font-medium'>+$99.00</div>
-      </div>
-      <div className='flex items-center'>
-        <Avatar className='h-9 w-9'>
-          <AvatarImage src='/avatars/05.png' alt='Avatar' />
-          <AvatarFallback>SD</AvatarFallback>
-        </Avatar>
-        <div className='ml-4 space-y-1'>
-          <p className='text-sm font-medium leading-none'>Sofia Davis</p>
-          <p className='text-sm text-muted-foreground'>sofia.davis@email.com</p>
-        </div>
-        <div className='ml-auto font-medium'>+$39.00</div>
-      </div>
+      ))}
     </div>
-  )
+  );
 }
