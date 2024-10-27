@@ -73,20 +73,29 @@ const requests = {
 };
 
 const createListEndpoint = (
-  endpoint: string, 
-  defaultSortBy: string, 
-  defaultSortDir: string = "asc", 
+  endpoint: string,
+  defaultSortBy: string,
+  defaultSortDir: string = "asc",
   extraParams?: (params: Record<string, any>) => string
 ) => {
   return (pageNo: number, pageSize: number, searchNearBy?: boolean) => {
     let query = `?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${defaultSortBy}&sortDir=${defaultSortDir}`;
-    
+
     if (extraParams) {
       query += extraParams({ searchNearBy });
     }
 
     return requests.get(`${endpoint}${query}`);
   };
+};
+
+const AdminDashboard = {
+  getTotalRevenueOfSystem: (month: number, year: number) => requests.get(`payment-histories/get-total-revenue-of-system?month=${month}&year=${year}`),
+  getNumberOfBookings: (bookingStatus: string, month: number, year: number) => requests.get(`location-bookings/count-all-bookings?bookingStatus=${bookingStatus}&month=${month}&year=${year}`),
+  getActiveUsers: () => requests.get(`users/count-active-users`),
+  getActiveLocations: () => requests.get(`locations/count-active-locations`),
+  getTotalRevenueOfSystemForYear: (year: number) => requests.get(`payment-histories/get-revenue-of-each-month?year=${year}`),
+  getRecentPaymentHistories: (status: string, top: number) => requests.get(`payment-histories/get-recent-payment-histories?status=${status}&top=${top}`),
 };
 
 const Location = {
@@ -165,7 +174,7 @@ const Orders = {
   searchOrderByStatusAndDate: (pageNo: number, pageSize: number, sortBy: string = "orderId", sortDir: string = "asc", status: string, orderDateFrom: string, orderDateTo: string) =>
     requests.get(`orders/search?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDir=${sortDir}&status=${status}&orderDateFrom=${orderDateFrom}&orderDateTo=${orderDateTo}`),
   updateOrder: (orderId: number) => requests.put(`orders?orderId=${orderId}`, {}),
-};            
+};
 
 const Users = {
   list: (pageNo: number, pageSize: number, sortBy: string = "userId", sortDir: string = "asc") => {
@@ -205,6 +214,7 @@ const agent = {
   Supplier,
   Location,
   LocationPaymentHistories,
+  AdminDashboard
 };
 
 export default agent;

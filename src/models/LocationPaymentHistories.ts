@@ -5,3 +5,9 @@ export interface LocationPaymentHistoriesObj {
     totalAmount: number,
     createdDate: string,
 }
+
+export interface RecentPaymentResponse {
+    userFullName: string,
+    userEmail: string,
+    paymentPrice: number,
+}
