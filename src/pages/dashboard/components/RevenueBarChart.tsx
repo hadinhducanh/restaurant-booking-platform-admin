@@ -1,5 +1,6 @@
 import agent from "@/api/agent";
 import { MonthlyRevenueResponse } from "@/models/Revenue";
+import { PriceFormatter } from "@/utils/PriceFormatter";
 import { useEffect, useState } from "react";
 import {
   Bar,
@@ -69,7 +70,7 @@ export function Overview() {
           fontSize={12}
           tickLine={false}
           axisLine={false}
-          tickFormatter={(value) => `$${value}`}
+          tickFormatter={(value) => `${PriceFormatter.formatPrice(value)}`}
         />
         <Bar
           dataKey="total"
