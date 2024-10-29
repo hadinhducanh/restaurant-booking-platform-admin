@@ -156,7 +156,7 @@ export default function DashboardOverview() {
         </Card>
         <Card className="col-span-1 lg:col-span-3">
           <CardHeader>
-            <CardTitle>Recent Sales</CardTitle>
+            <CardTitle>Recent bookings</CardTitle>
             {/* <CardDescription>
                   You made 265 sales this month.
                 </CardDescription> */}

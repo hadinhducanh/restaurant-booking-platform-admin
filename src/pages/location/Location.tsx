@@ -26,6 +26,8 @@ export const Location = () => {
           const result = await agent.Location.list(pageNo, pageSize);
           setData(result.content);
           setTotalPages(result.totalPages);
+          console.log(result);
+          
         } catch (error) {
           console.error("Error fetching data:", error);
         } finally {
