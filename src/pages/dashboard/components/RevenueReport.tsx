@@ -3,20 +3,20 @@ import agent from "@/api/agent";
 import { LoaderCircle } from "lucide-react";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTablePagination } from "@/components/DataTable/data-table-pagination";
-import { columns } from "@/pages/location/components/LocationColumns";
 import { LocationRevenueReportResponse } from "@/models/Revenue";
+import { columns } from "./RevenueReportColumn";
 
 export const RevenueReport = () => {
   const date = new Date();
   const [data, setData] = useState<LocationRevenueReportResponse[]>([]);
   const [pageNo, setPageNo] = useState(0);
   const [pageSize, setPageSize] = useState(10);
-  const [sortBy, setSortBy] = useState<string>("id");
-  const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+  const [sortBy] = useState<string>("id");
+  const [sortDir] = useState<"asc" | "desc">("asc");
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const [month, setMonth] = useState<number>(date.getMonth() + 1);
-  const [year, setYear] = useState<number>(date.getFullYear());
+  const [month] = useState<number>(date.getMonth() + 1);
+  const [year] = useState<number>(date.getFullYear());
 
   useEffect(() => {
     const getData = async () => {
