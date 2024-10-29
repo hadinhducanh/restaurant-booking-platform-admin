@@ -96,6 +96,7 @@ const AdminDashboard = {
   getActiveLocations: () => requests.get(`locations/count-active-locations`),
   getTotalRevenueOfSystemForYear: (year: number) => requests.get(`payment-histories/get-revenue-of-each-month?year=${year}`),
   getRecentPaymentHistories: (status: string, top: number) => requests.get(`payment-histories/get-recent-payment-histories?status=${status}&top=${top}`),
+  getLocationRevenueReports: (pageNo: number, pageSize: number, sortBy: string = "id", sortDir: string = "asc", month: number, year: number) => requests.get(`payment-histories/get-location-revenue-reports?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDir=${sortDir}&month=${month}&year=${year}`),
 };
 
 const Location = {
