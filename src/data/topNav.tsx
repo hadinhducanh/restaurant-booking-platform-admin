@@ -1,9 +1,9 @@
 export const topNav = [
-  {
-    title: "Overview",
-    href: "dashboard/overview",
-    isActive: true,
-  },
+  // {
+  //   title: "Tổng quan",
+  //   href: "/admin",
+  //   isActive: true,
+  // },
   // {
   //   title: "Customers",
   //   href: "dashboard/customers",
