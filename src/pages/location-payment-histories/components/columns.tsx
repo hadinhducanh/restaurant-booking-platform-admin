@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 
 import { Icons } from "@/components/ui/icons";
-// import { CellAction } from "./cell-action";
+import { PriceFormatter } from "@/utils/PriceFormatter";
 
-export type BrandColumn = {
+export type Transaction = {
   id: number,
   locationBookingId: number,
   paymentMethodId: number,
@@ -15,7 +15,7 @@ export type BrandColumn = {
   createdDate: string,
 };
 
-export const columns: ColumnDef<BrandColumn>[] = [
+export const columns: ColumnDef<Transaction>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -45,7 +45,7 @@ export const columns: ColumnDef<BrandColumn>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Payment ID
+          Mã giao dịch
           <Icons.sort className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -60,39 +60,20 @@ export const columns: ColumnDef<BrandColumn>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Location Booking ID
-          <Icons.sort className="ml-2 h-4 w-4" />
+          Mã đơn booking
         </Button>
       );
     },
   },
   {
-    accessorKey: "paymentMethodId",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Payment Method ID
-          <Icons.sort className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    accessorKey: "paymentMethod",
+    header: "Phương thức thanh toán",
+    cell: () => <span>Chuyển khoản</span>,
   },
   {
     accessorKey: "totalAmount",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Total Amount
-          <Icons.sort className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: "Số tiền giao dịch (vnđ)",
+    cell: ({ row }) => <span>{PriceFormatter.formatPrice(row.original.totalAmount)}</span>,
   },
   {
     accessorKey: "createdDate",
@@ -102,30 +83,9 @@ export const columns: ColumnDef<BrandColumn>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Created Date
-          <Icons.sort className="ml-2 h-4 w-4" />
+          Ngày tạo giao dịch
         </Button>
       );
     },
   },
-  // {
-  //   accessorKey: "products.productName",
-  //   header: ({ column }) => {
-  //     return (
-  //       <Button
-  //         variant="ghost"
-  //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-  //       >
-  //         Product Name
-  //         <Icons.sort className="ml-2 h-4 w-4" />
-  //       </Button>
-  //     );
-  //   },
-  // },
-
-  // {
-  //   id: "actions",
-  //   header: () => <div>Actions</div>,
-  //   cell: ({ row }) => <CellAction data={row.original} />,
-  // },
 ];

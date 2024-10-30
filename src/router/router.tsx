@@ -23,6 +23,7 @@ import { Location } from "@/pages/location/Location";
 import { LocationPaymentHistories } from "@/pages/location-payment-histories/LocationPaymentHistories";
 import LocationDetail from "@/pages/location/location-detail/LocationDetail";
 import { Advertisement } from "@/pages/advertisement/Advertisement";
+import { PaymentHistoriesBetweenLocationAndSystem } from "@/pages/payment-histories-between-location-and-system/PaymentHistoriesBetweenLocationAndSystem";
 
 const router = createBrowserRouter([
   {
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/location-payment-histories/:locationId",
         element: <LocationPaymentHistories />,
+      },
+      {
+        path: "/admin/payment-histories-between-location-and-system",
+        element: <PaymentHistoriesBetweenLocationAndSystem />,
       },
     ],
   },

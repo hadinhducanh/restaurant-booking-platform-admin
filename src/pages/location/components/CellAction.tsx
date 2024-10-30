@@ -55,6 +55,10 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     navigate(`/admin/location-payment-histories/${data.id}`);
   };
 
+  const handleViewPaymentBetweenLocationAndSystem = () => {
+    navigate(`/admin/payment-histories-between-location-and-system`);
+  };
+
   return (
     <>
       <AlertModal
@@ -75,20 +79,24 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem onClick={handleViewDetailsClick}>
               <Icons.info className="mr-2 h-4 w-4" />
-              View Details
+              Xem thông tin chi tiết
             </DropdownMenuItem>
             <DropdownMenuItem onClick={handleViewPaymentHistoriesClick}>
               <Icons.speedNext className="mr-2 h-4 w-4" />
-              View Payment Histories
+              Lịch sử giao dịch với khách hàng
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleViewPaymentBetweenLocationAndSystem}>
+              <Icons.check className="mr-2 h-4 w-4" />
+              Lịch sử giao dịch giữa nhà hàng và hệ thống
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
+            {/* <DropdownMenuItem
               onClick={() => setOpen(true)}
               className="text-red-600"
             >
               <Icons.delete className="mr-2 h-4 w-4" />
               Delete
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
         {dialogContent && <DialogContent>{dialogContent}</DialogContent>}
