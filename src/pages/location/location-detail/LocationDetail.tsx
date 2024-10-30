@@ -88,6 +88,16 @@ export default function LocationDetail() {
     setSelectedImage(img);
   };
 
+  const dayMapping: { [key: string]: string } = {
+    MONDAY: "Thứ hai",
+    TUESDAY: "Thứ ba",
+    WEDNESDAY: "Thứ tư",
+    THURSDAY: "Thứ năm",
+    FRIDAY: "Thứ sáu",
+    SATURDAY: "Thứ bảy",
+    SUNDAY: "Chủ nhật",
+  };
+
   return (
     <div className="container mx-auto p-4">
       {/* Wrap the image and info section in a flex container */}
@@ -140,16 +150,16 @@ export default function LocationDetail() {
             {location?.name}
           </h2>
           <p className="text-gray-200 mb-2">
-            <strong>Address:</strong> {location?.address}
+            <strong>Địa chỉ:</strong> {location?.address}
           </p>
           <p className="text-gray-200 mb-2">
-            <strong>Phone:</strong> {location?.phone}
+            <strong>Số điện thoại:</strong> {location?.phone}
           </p>
           <p className="text-gray-200 mb-2">
-            <strong>Views:</strong> {location?.view}
+            <strong>Lượt xem:</strong> {location?.view}
           </p>
           <p className="text-gray-200 mb-2 flex">
-            <strong className="mr-2">Rating:</strong>{" "}
+            <strong className="mr-2">Đánh giá:</strong>{" "}
             {location?.rating && (
               <div style={{ display: "flex", alignItems: "center" }}>
                 {[...Array(Math.floor(location?.rating))].map((_, index) => (
@@ -159,7 +169,7 @@ export default function LocationDetail() {
               </div>
             )}
           </p>
-          <p className="text-gray-200 mb-2">
+          {/* <p className="text-gray-200 mb-2">
             <strong>On Suggest:</strong> {location?.onSuggest ? "Yes" : "No"}
           </p>
           <p className="text-gray-200 mb-2">
@@ -167,24 +177,24 @@ export default function LocationDetail() {
           </p>
           <p className="text-gray-200 mb-2">
             <strong>On Banner:</strong> {location?.onBanner ? "Yes" : "No"}
-          </p>
+          </p> */}
           <p className="text-gray-200 mb-2">
-            <strong>Brand:</strong> {location?.brand?.name}
+            <strong>Nhãn hiệu:</strong> {location?.brand?.name}
           </p>
           {/* Display category names */}
           <p className="text-gray-200 mb-2">
-            <strong>Categories:</strong>{" "}
+            <strong>Loại nhà hàng:</strong>{" "}
             {location?.category &&
               formatArrayToCommaSeparated(location.category, "name")}
           </p>
           {/* Display tag names */}
           <p className="text-gray-200 mb-2">
-            <strong>Tags:</strong>{" "}
+            <strong>Nhãn:</strong>{" "}
             {location?.tag && formatArrayToCommaSeparated(location.tag, "name")}
           </p>
           {/* Status with conditional background color */}
           <p className="text-gray-200 mb-2">
-            <strong className="mr-2">Status:</strong>
+            <strong className="mr-2">Trạng thái:</strong>
             <span
               className={`py-1 px-3 rounded-lg text-white font-bold ${
                 location?.status === "ACTIVE" ? "bg-green-500" : "bg-red-500"
@@ -194,7 +204,7 @@ export default function LocationDetail() {
             </span>
           </p>
           <p className="text-gray-200 mb-2">
-            <strong>Description:</strong> {location?.description}
+            <strong>Mô tả:</strong> {location?.description}
           </p>
         </div>
       </div>
@@ -208,7 +218,7 @@ export default function LocationDetail() {
         }}
       >
         <h3 className="text-xl font-semibold mb-4 text-white">
-          <i className="fas fa-clock mr-2"></i> Working Hours:
+          <i className="fas fa-clock mr-2"></i> Giờ mở cửa:
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-200">
           {location?.workingHour &&
@@ -220,8 +230,8 @@ export default function LocationDetail() {
                 {/* Fixed width for the day */}
                 <div className="text-lg font-bold text-white">
                   {" "}
-                  {/* Ensures all days take the same space */}
-                  {hour.day}
+                  {/* {hour.day} */}
+                  {dayMapping[hour.day.toUpperCase() as keyof typeof dayMapping]} {/* Display Vietnamese day */}
                 </div>
                 {/* Monospaced font for the time to align properly */}
                 <div className="text-base text-white">

@@ -76,7 +76,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>Hành động</DropdownMenuLabel>
             <DropdownMenuItem onClick={handleViewDetailsClick}>
               <Icons.info className="mr-2 h-4 w-4" />
               Xem thông tin chi tiết
