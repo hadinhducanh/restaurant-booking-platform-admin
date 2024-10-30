@@ -1,7 +1,6 @@
 import agent from "@/api/agent";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RecentPaymentResponse } from "@/models/LocationPaymentHistories";
-import { PriceFormatter } from "@/utils/PriceFormatter";
 import { useEffect, useState } from "react";
 
 export function RecentSales() {
@@ -25,7 +24,7 @@ export function RecentSales() {
       }
     };
     getData();
-  }, []); // Corrected dependency array placement
+  }, []);
 
   const getInitials = (fullName: string) => {
     const names = fullName.split(" ");
@@ -69,7 +68,8 @@ export function RecentSales() {
             <p className="text-sm text-muted-foreground">{item.userEmail}</p>
           </div>
 
-          <div className="ml-auto font-medium">{PriceFormatter.formatPrice(item.paymentPrice)} vnđ</div>
+          {/* <div className="ml-auto font-medium">{PriceFormatter.formatPrice(item.paymentPrice)} vnđ</div> */}
+          <div className="ml-auto font-medium">20.000 vnđ</div>
         </div>
       ))}
     </div>

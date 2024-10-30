@@ -30,26 +30,14 @@ export const sidelinks: SideLink[] = [
     icon: <IconLayoutDashboard size={18} />,
   },
   {
-    title: "Người dùng",
-    label: "",
-    href: "/admin/users",
-    icon: <IconUsers size={18} />,
-  },
-  {
     title: "Nhà hàng liên kết",
     href: "/admin/location",
     icon: <IconHome size={18} />,
   },
   {
-    title: "Bài viết",
+    title: "Gói quảng cáo",
     label: "",
     href: "/admin/blog",
     icon: <IconBrandBlogger size={18} />,
-  },
-  {
-    title: "Báo cáo",
-    label: "",
-    href: "/admin/reports",
-    icon: <IconReport size={18} />,
   },
 ];

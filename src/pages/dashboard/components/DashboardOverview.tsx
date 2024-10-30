@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { RecentSales } from "./RecentSales";
 import { Overview } from "./RevenueBarChart";
 import { useEffect, useState } from "react";
@@ -156,10 +156,8 @@ export default function DashboardOverview() {
         </Card>
         <Card className="col-span-1 lg:col-span-3">
           <CardHeader>
-            <CardTitle>Recent bookings</CardTitle>
-            {/* <CardDescription>
-                  You made 265 sales this month.
-                </CardDescription> */}
+            <CardTitle>Các đơn booking gần nhất</CardTitle>
+            <CardDescription>5 đơn booking gần đây</CardDescription>
           </CardHeader>
           <CardContent>
             <RecentSales />
