@@ -22,27 +22,27 @@ export const columns: ColumnDef<LocationRevenueReportResponse>[] = [
   },
   {
     accessorKey: "locationName",
-    header: "Location name",
+    header: "Tên nhà hàng",
     cell: ({ row }) => <span>{row.original.locationName}</span>,
   },
   {
     accessorKey: "locationPhoneNumber",
-    header: "Phone number",
+    header: "Số điện thoại",
     cell: ({ row }) => <span>{row.original.locationPhoneNumber}</span>,
   },
   {
     accessorKey: "numberOfBookingsInMonth",
-    header: "Number of bookings",
+    header: "Số lượng đơn",
     cell: ({ row }) => <span>{row.original.numberOfBookingsInMonth}</span>,
   },
   {
     accessorKey: "locationRevenueInMonth",
-    header: "Location revenue (vnđ)",
+    header: "Doanh thu nhà hàng (vnđ)",
     cell: ({ row }) => <span>{PriceFormatter.formatPrice(row.original.locationRevenueInMonth)}</span>,
   },
   {
     accessorKey: "revenueBroughtForSystemInMonth",
-    header: "Revenue brought for system (vnđ)",
+    header: "Doanh thu đem lại cho hệ thống (vnđ)",
     cell: ({ row }) => <span>{PriceFormatter.formatPrice(row.original.revenueBroughtForSystemInMonth)}</span>,
   },
 ];

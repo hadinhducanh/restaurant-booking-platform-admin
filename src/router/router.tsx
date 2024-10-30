@@ -7,8 +7,6 @@ import { Products } from "@/pages/products/Products";
 import { Category } from "@/pages/category/Category";
 import { AddCategory } from "@/pages/category/category-detail/add-category-form";
 import { Brand } from "@/pages/brand/Brand";
-import { Blog } from "@/pages/blog/Blog";
-import { AddBlog } from "@/pages/blog/blog-detail/add-blog-form";
 import Vouchers from "@/pages/vouchers/Vouchers";
 import AddVoucher from "@/pages/vouchers/voucher-detail/add-voucher-form";
 import Orders from "@/pages/order/Orders";
@@ -24,6 +22,8 @@ import { StockForm } from "@/pages/stock-transaction/stock-detail/add-stock-form
 import { Location } from "@/pages/location/Location";
 import { LocationPaymentHistories } from "@/pages/location-payment-histories/LocationPaymentHistories";
 import LocationDetail from "@/pages/location/location-detail/LocationDetail";
+import { Advertisement } from "@/pages/advertisement/Advertisement";
+import { PaymentHistoriesBetweenLocationAndSystem } from "@/pages/payment-histories-between-location-and-system/PaymentHistoriesBetweenLocationAndSystem";
 
 const router = createBrowserRouter([
   {
@@ -103,12 +103,8 @@ const router = createBrowserRouter([
         element: <BrandForm />,
       },
       {
-        path: "/admin/blog",
-        element: <Blog />,
-      },
-      {
-        path: "/admin/newBlog",
-        element: <AddBlog />,
+        path: "/admin/advertisement",
+        element: <Advertisement />,
       },
       {
         path: "/admin/newStock",
@@ -121,6 +117,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/location-payment-histories/:locationId",
         element: <LocationPaymentHistories />,
+      },
+      {
+        path: "/admin/payment-histories-between-location-and-system",
+        element: <PaymentHistoriesBetweenLocationAndSystem />,
       },
     ],
   },

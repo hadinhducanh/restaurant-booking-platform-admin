@@ -1,15 +1,8 @@
 import {
   IconBrandBlogger,
-  // IconCategory,
   IconLayoutDashboard,
-  // IconMilk,
-  IconUsers,
-  // IconTicket,
-  // IconMenuOrder,
-  IconReport,
   IconHome
 } from "@tabler/icons-react";
-// import { Milk, StoreIcon } from "lucide-react";
 
 export interface NavLink {
   title: string;
@@ -37,7 +30,7 @@ export const sidelinks: SideLink[] = [
   {
     title: "Gói quảng cáo",
     label: "",
-    href: "/admin/blog",
+    href: "/admin/advertisement",
     icon: <IconBrandBlogger size={18} />,
   },
 ];

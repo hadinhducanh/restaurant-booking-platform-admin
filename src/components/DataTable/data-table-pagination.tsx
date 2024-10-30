@@ -29,10 +29,10 @@ export function DataTablePagination({
   setPageSize,
 }: DataTablePaginationProps) {
   return (
-    <div className="flex items-center justify-end px-2">
+    <div className="flex items-center justify-end">
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Rows per page</p>
+          <p className="text-sm font-medium">Giới hạn kết quả mỗi trang</p>
           <Select
             value={`${pageSize}`}
             onValueChange={(value: any) => {
@@ -52,7 +52,7 @@ export function DataTablePagination({
           </Select>
         </div>
         <div className="flex w-[100px] items-center justify-center text-sm font-medium">
-          Page {currentPage + 1} of {totalPages}
+          Trang {currentPage + 1} trong {totalPages}
         </div>
         <div className="flex items-center space-x-2">
           <Button

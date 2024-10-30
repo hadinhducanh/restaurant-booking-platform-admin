@@ -46,8 +46,8 @@ export const LocationPaymentHistories = () => {
     <>
       <div className="flex items-center justify-between pt-4">
         <Heading
-          title={`Location Payment Histories (${Object.keys(data).length})`}
-          description="Manage Location Payment Histories"
+          title={`Lịch sử giao dịch với khách hàng (${Object.keys(data).length})`}
+          description=""
         />
 
         {/* <Button onClick={() => navigate("/admin/newBrand", { state: null })}>
@@ -56,12 +56,12 @@ export const LocationPaymentHistories = () => {
         </Button> */}
       </div>
       <Separator />
-      <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
+      <div className="-mx-4 flex-1 overflow-auto px-4 py-4 lg:flex-row lg:space-x-12 lg:space-y-0">
         <DataTable
           columns={columns}
           data={data}
           searchKey="locationBookingId"
-          placeholder="Search by Location Booking ID.."
+          placeholder="Tìm kiếm giao dịch..."
         />
       </div>
       <DataTablePagination

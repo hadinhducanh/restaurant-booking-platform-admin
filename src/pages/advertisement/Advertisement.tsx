@@ -1,29 +1,26 @@
-import { LocationResponseLazy } from "@/models/Location";
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import agent from "@/api/agent";
 import { LoaderCircle } from "lucide-react";
 import { Heading } from "@/components/ui/heading";
-// import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/DataTable/data-table";
 import { DataTablePagination } from "@/components/DataTable/data-table-pagination";
-import { columns } from "./components/LocationColumns";
+import { AdvertisementResponse } from "@/models/Advertisement";
+import { columns } from "./components/AdvertisementColumn";
 
-export const Location = () => {
-    const [data, setData] = useState<LocationResponseLazy[]>([]);
+export const Advertisement = () => {
+    const [data, setData] = useState<AdvertisementResponse[]>([]);
     const [pageNo, setPageNo] = useState(0);
     const [pageSize, setPageSize] = useState(10);
     const [sortBy] = useState("id");
     const [sortDir] = useState<"asc" | "desc">("asc");
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState<boolean>(true);
-    // const navigate = useNavigate();
   
     useEffect(() => {
       const getData = async () => {
         try {
-          const result = await agent.Location.list(pageNo, pageSize);
+          const result = await agent.Advertisement.getAllAds(pageNo, pageSize, sortBy, sortDir);
           setData(result.content);
           setTotalPages(result.totalPages);
           console.log(result);
@@ -48,7 +45,7 @@ export const Location = () => {
     <>
      <div className="flex items-center justify-between">
         <Heading
-          title={`Quản lí nhà hàng`}
+          title={`Quản lí gói quảng cáo`}
           description=""
         />
 {/* 
@@ -63,7 +60,7 @@ export const Location = () => {
           columns={columns}
           data={data}
           searchKey="Location"
-          placeholder="Tìm kiếm nhà hàng tại đây..."
+          placeholder="Tìm kiếm gói quảng cáo tại đây..."
         />
       </div>
       <DataTablePagination

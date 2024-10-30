@@ -51,7 +51,7 @@ export default function DashboardOverview() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+            <CardTitle className="text-sm font-medium">Doanh thu hệ thống</CardTitle>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -67,13 +67,13 @@ export default function DashboardOverview() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalRevenue} vnđ</div>
-            <p className="text-xs text-muted-foreground">+8% from last month</p>
+            <p className="text-xs text-muted-foreground">+100% so với tháng trước</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Number of bookings
+              Số lượng đơn
             </CardTitle>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,12 +91,12 @@ export default function DashboardOverview() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalBooking}</div>
-            <p className="text-xs text-muted-foreground">+5% from last month</p>
+            <p className="text-xs text-muted-foreground">+5% so với tháng trước</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Users</CardTitle>
+            <CardTitle className="text-sm font-medium">Số khách hàng</CardTitle>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -115,14 +115,14 @@ export default function DashboardOverview() {
           <CardContent>
             <div className="text-2xl font-bold">{totalUsers}</div>
             <p className="text-xs text-muted-foreground">
-              +15% from last month
+              +15% so với tháng trước
             </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
-              Active Locations
+              Số nhà hàng
             </CardTitle>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@ export default function DashboardOverview() {
           <CardContent>
             <div className="text-2xl font-bold">{totalLocations}</div>
             <p className="text-xs text-muted-foreground">
-              +12% from last month
+              +12% so với tháng trước
             </p>
           </CardContent>
         </Card>
@@ -148,7 +148,7 @@ export default function DashboardOverview() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-7">
         <Card className="col-span-1 lg:col-span-4">
           <CardHeader>
-            <CardTitle>Overview</CardTitle>
+            <CardTitle>Biểu đồ doanh thu</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
             <Overview />
