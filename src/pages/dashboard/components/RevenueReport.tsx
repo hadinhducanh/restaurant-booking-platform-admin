@@ -47,7 +47,7 @@ export const RevenueReport = () => {
           columns={columns}
           data={data}
           searchKey="Location revenue"
-          placeholder="Search here..."
+          placeholder="Tìm kiếm tại đây..."
         />
       </div>
       <DataTablePagination

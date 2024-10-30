@@ -16,7 +16,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import agent from "@/api/agent";
 import { useToast } from "@/components/ui/use-toast";
 import { AlertModal } from "@/components/modal/alert-modal";
-import { BlogColumn } from "./columns";
+import { BlogColumn } from "./AdvertisementColumn";
 
 interface CellActionProps {
   data: BlogColumn;

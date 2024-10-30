@@ -107,6 +107,9 @@ const Location = {
   getById: (locationId: number) => requests.get(`locations/${locationId}`),
 };
 
+const Advertisement = {
+  getAllAds: (pageNo: number, pageSize: number, sortBy: string = "id", sortDir: string = "asc") => requests.get(`ads?pageNo=${pageNo}&pageSize=${pageSize}&sortBy=${sortBy}&sortDir=${sortDir}`),
+};
 
 const Products = {
   list: createListEndpoint("product", "productId"),
@@ -215,7 +218,8 @@ const agent = {
   Supplier,
   Location,
   LocationPaymentHistories,
-  AdminDashboard
+  AdminDashboard,
+  Advertisement
 };
 
 export default agent;

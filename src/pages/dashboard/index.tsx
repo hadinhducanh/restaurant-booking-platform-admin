@@ -1,4 +1,3 @@
-import { Button } from "@/components/custom/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RevenueReport } from "./components/RevenueReport";
 import DashboardOverview from "./components/DashboardOverview";

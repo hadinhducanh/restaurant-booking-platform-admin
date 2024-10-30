@@ -45,22 +45,22 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
   },
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Tên nhà hàng",
     cell: ({ row }) => <span>{row.original.name}</span>,
   },
   {
     accessorKey: "categoryName",
-    header: "Category",
+    header: "Loại nhà hàng",
     cell: ({ row }) => <span>{row.original.categoryName.join(", ")}</span>,
   },
   {
     accessorKey: "address",
-    header: "Address",
+    header: "Địa chỉ",
     cell: ({ row }) => <span>{row.original.address}</span>,
   },
   {
     accessorKey: "phone",
-    header: "Phone",
+    header: "Số điện thoại",
     cell: ({ row }) => <span>{row.original.phone}</span>,
   },
   // {
@@ -86,12 +86,12 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
   // },
   {
     accessorKey: "view",
-    header: "Views",
+    header: "Số lượt xem",
     cell: ({ row }) => <span>{row.original.view}</span>,
   },
   {
     accessorKey: "rating",
-    header: "Rating",
+    header: "Đánh giá",
     cell: ({ row }) => (
       <div style={{ display: "flex", alignItems: "center" }}>
         {[...Array(Math.floor(row.original.rating))].map((_, index) => (
@@ -103,7 +103,7 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: "Trạng thái",
     cell: ({ row }) => {
       const status = row.original.status.toLowerCase();
       const color = status === "active" ? "green" : "red";
@@ -116,7 +116,7 @@ export const columns: ColumnDef<LocationResponseLazy>[] = [
   },
   {
     id: "actions",
-    header: "Actions",
+    header: "Hành động",
     cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];
